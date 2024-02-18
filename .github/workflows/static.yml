@@ -33,12 +33,14 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
-          # Upload entire repository
-          path: '.'
-      - name: Run Resume1
-        run: ./Resume1.html
+          # Upload Resume1 HTML file
+          name: Resume1
+          path: Resume1.html
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            artifact: Resume1
